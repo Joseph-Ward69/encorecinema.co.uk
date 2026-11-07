@@ -1,0 +1,2 @@
+# GitHub Pages: publish the built pages only, not the sources or tools.
+exclude: [src, build.sh, serve.ps1, README.md, form-url]
