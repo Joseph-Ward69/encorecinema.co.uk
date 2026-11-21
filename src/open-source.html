@@ -1,0 +1,41 @@
+Open-source software: Encore Cinema | The open-source software inside the Encore Cinema TV app, its licences, and the FFmpeg source code we use. |
+<div class="wrap doc">
+  <h1>Open-source software</h1>
+  <p class="muted">Last updated 21 November 2026</p>
+
+  <p>The Encore Cinema TV app is built with open-source software. Thank you to everyone who makes it. This page lists it, with
+    its licences, and gives you the source code the licences ask us to share.</p>
+
+  <h2>FFmpeg</h2>
+  <p>When your TV or soundbar can't play a film's DTS or Dolby TrueHD soundtrack itself, the app turns it into lossless
+    surround sound using <a href="https://ffmpeg.org">FFmpeg</a>. We include only FFmpeg's DTS and TrueHD (MLP) sound
+    decoders, built from FFmpeg 6.0.1 without any of its GPL parts. That part of FFmpeg is licensed under the
+    <a href="/assets/open-source/COPYING.LGPLv2.1">GNU Lesser General Public License, version 2.1 or later</a>.</p>
+  <p>FFmpeg is built into a small library in the app, <code>libffmpegJNI.so</code>, together with the code that connects it
+    to the app's player (from AndroidX Media3, Apache License 2.0). Everything you need to change FFmpeg and build that
+    library again is here:</p>
+  <ul>
+    <li><a href="/assets/open-source/ffmpeg-6.0.1.tar.xz">FFmpeg 6.0.1 source code</a> (10 MB, unchanged from ffmpeg.org;
+      SHA-256 <code>9b16b8731d78e596b4be0d720428ca42df642bb2d78342881ff7f5bc29fc9623</code>)</li>
+    <li><a href="/assets/open-source/build-ffmpeg-linux.sh">The build script</a>: the exact settings we use, built with the
+      Android NDK r26b</li>
+    <li><a href="/assets/open-source/ffmpeg_jni.cc">The connecting code</a> (<code>ffmpeg_jni.cc</code>, Apache License 2.0)</li>
+  </ul>
+  <p>To use a library you've built yourself, replace <code>lib/&lt;your TV's processor type&gt;/libffmpegJNI.so</code> inside
+    the app. If you'd like any of this on a disc or by email instead, write to
+    <a href="mailto:contact@encoreaudio.co.uk">contact@encoreaudio.co.uk</a>; this offer stands for at least three years after
+    we last release a version of the app with it.</p>
+
+  <h2>Everything else</h2>
+  <ul>
+    <li>AndroidX Media3, Jetpack Compose and the other AndroidX libraries: Apache License 2.0</li>
+    <li>OkHttp: Apache License 2.0</li>
+    <li>Coil: Apache License 2.0</li>
+    <li>Guava: Apache License 2.0</li>
+    <li>kotlinx.serialization and the Kotlin standard library: Apache License 2.0</li>
+    <li>The ALAC decoder, ported from Apple's ALAC reference code: Apache License 2.0</li>
+    <li>The Inter typeface: SIL Open Font License 1.1</li>
+  </ul>
+  <p>The <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a> and the
+    <a href="https://openfontlicense.org">SIL Open Font License 1.1</a> are on their publishers' websites.</p>
+</div>

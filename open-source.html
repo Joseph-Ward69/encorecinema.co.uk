@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open-source software: Encore Cinema</title>
+<meta name="description" content="The open-source software inside the Encore Cinema TV app, its licences, and the FFmpeg source code we use.">
+<meta property="og:title" content="Open-source software: Encore Cinema">
+<meta property="og:description" content="The open-source software inside the Encore Cinema TV app, its licences, and the FFmpeg source code we use.">
+<meta property="og:image" content="https://encorecinema.co.uk/assets/shots/tv-films.jpg">
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/cinema.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="/"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect x="1" y="1" width="62" height="62" rx="16" fill="#5B96FF"/><path fill="#0A1A3A" fill-rule="evenodd" d="M16.8,16 h2.4 a2.8,2.8 0 0 1 2.8,2.8 v26.4 a2.8,2.8 0 0 1 -2.8,2.8 h-2.4 a2.8,2.8 0 0 1 -2.8,-2.8 v-26.4 a2.8,2.8 0 0 1 2.8,-2.8 z M17.3,18.5 h1.4 a0.9,0.9 0 0 1 0.9,0.9 v2.2 a0.9,0.9 0 0 1 -0.9,0.9 h-1.4 a0.9,0.9 0 0 1 -0.9,-0.9 v-2.2 a0.9,0.9 0 0 1 0.9,-0.9 z M17.3,25.5 h1.4 a0.9,0.9 0 0 1 0.9,0.9 v2.2 a0.9,0.9 0 0 1 -0.9,0.9 h-1.4 a0.9,0.9 0 0 1 -0.9,-0.9 v-2.2 a0.9,0.9 0 0 1 0.9,-0.9 z M17.3,32.5 h1.4 a0.9,0.9 0 0 1 0.9,0.9 v2.2 a0.9,0.9 0 0 1 -0.9,0.9 h-1.4 a0.9,0.9 0 0 1 -0.9,-0.9 v-2.2 a0.9,0.9 0 0 1 0.9,-0.9 z M17.3,39.5 h1.4 a0.9,0.9 0 0 1 0.9,0.9 v2.2 a0.9,0.9 0 0 1 -0.9,0.9 h-1.4 a0.9,0.9 0 0 1 -0.9,-0.9 v-2.2 a0.9,0.9 0 0 1 0.9,-0.9 z"/><path fill="#0A1A3A" d="M27.6,16 h4.8 a2.6,2.6 0 0 1 2.6,2.6 v1.8 a2.6,2.6 0 0 1 -2.6,2.6 h-4.8 a2.6,2.6 0 0 1 -2.6,-2.6 v-1.8 a2.6,2.6 0 0 1 2.6,-2.6 z M27.6,28.5 h1.8 a2.6,2.6 0 0 1 2.6,2.6 v1.8 a2.6,2.6 0 0 1 -2.6,2.6 h-1.8 a2.6,2.6 0 0 1 -2.6,-2.6 v-1.8 a2.6,2.6 0 0 1 2.6,-2.6 z M27.6,41 h4.8 a2.6,2.6 0 0 1 2.6,2.6 v1.8 a2.6,2.6 0 0 1 -2.6,2.6 h-4.8 a2.6,2.6 0 0 1 -2.6,-2.6 v-1.8 a2.6,2.6 0 0 1 2.6,-2.6 z"/><path fill="#0A1A3A" stroke="#0A1A3A" stroke-width="3" stroke-linejoin="round" d="M39.5,22 L39.5,42 L52,32 Z"/></svg><span>Encore Cinema&trade;</span></a>
+  <nav class="main">
+    <a href="/">Home</a>
+    <a href="/#features">Features</a>
+    <a href="/#how">How it works</a>
+    <a href="/#questions">Questions</a>
+    <a href="/#interest">Register interest</a>
+  </nav>
+</div></header>
+<main>
+<div class="wrap doc">
+  <h1>Open-source software</h1>
+  <p class="muted">Last updated 21 November 2026</p>
+
+  <p>The Encore Cinema TV app is built with open-source software. Thank you to everyone who makes it. This page lists it, with
+    its licences, and gives you the source code the licences ask us to share.</p>
+
+  <h2>FFmpeg</h2>
+  <p>When your TV or soundbar can't play a film's DTS or Dolby TrueHD soundtrack itself, the app turns it into lossless
+    surround sound using <a href="https://ffmpeg.org">FFmpeg</a>. We include only FFmpeg's DTS and TrueHD (MLP) sound
+    decoders, built from FFmpeg 6.0.1 without any of its GPL parts. That part of FFmpeg is licensed under the
+    <a href="/assets/open-source/COPYING.LGPLv2.1">GNU Lesser General Public License, version 2.1 or later</a>.</p>
+  <p>FFmpeg is built into a small library in the app, <code>libffmpegJNI.so</code>, together with the code that connects it
+    to the app's player (from AndroidX Media3, Apache License 2.0). Everything you need to change FFmpeg and build that
+    library again is here:</p>
+  <ul>
+    <li><a href="/assets/open-source/ffmpeg-6.0.1.tar.xz">FFmpeg 6.0.1 source code</a> (10 MB, unchanged from ffmpeg.org;
+      SHA-256 <code>9b16b8731d78e596b4be0d720428ca42df642bb2d78342881ff7f5bc29fc9623</code>)</li>
+    <li><a href="/assets/open-source/build-ffmpeg-linux.sh">The build script</a>: the exact settings we use, built with the
+      Android NDK r26b</li>
+    <li><a href="/assets/open-source/ffmpeg_jni.cc">The connecting code</a> (<code>ffmpeg_jni.cc</code>, Apache License 2.0)</li>
+  </ul>
+  <p>To use a library you've built yourself, replace <code>lib/&lt;your TV's processor type&gt;/libffmpegJNI.so</code> inside
+    the app. If you'd like any of this on a disc or by email instead, write to
+    <a href="mailto:contact@encoreaudio.co.uk">contact@encoreaudio.co.uk</a>; this offer stands for at least three years after
+    we last release a version of the app with it.</p>
+
+  <h2>Everything else</h2>
+  <ul>
+    <li>AndroidX Media3, Jetpack Compose and the other AndroidX libraries: Apache License 2.0</li>
+    <li>OkHttp: Apache License 2.0</li>
+    <li>Coil: Apache License 2.0</li>
+    <li>Guava: Apache License 2.0</li>
+    <li>kotlinx.serialization and the Kotlin standard library: Apache License 2.0</li>
+    <li>The ALAC decoder, ported from Apple's ALAC reference code: Apache License 2.0</li>
+    <li>The Inter typeface: SIL Open Font License 1.1</li>
+  </ul>
+  <p>The <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a> and the
+    <a href="https://openfontlicense.org">SIL Open Font License 1.1</a> are on their publishers' websites.</p>
+</div>
+</main>
+<footer class="site"><div class="wrap">
+  <div>&copy; 2026 Encore Audio Ltd. Encore Cinema&trade; is made by Encore Audio Ltd, the makers of Encore Audio.<br>
+  Encore Audio Ltd, registered in England and Wales, company number 17539933.<br>
+  Registered office: 128 City Road, London EC1V 2NX.<br>
+  <a href="mailto:contact@encoreaudio.co.uk">contact@encoreaudio.co.uk</a><br>
+  <span class="small-print">Dolby, Dolby Vision, Dolby Atmos and Dolby TrueHD are trade marks of Dolby Laboratories. Google TV and Android TV are trade marks of
+  Google LLC. Fire TV is a trade mark of Amazon.com, Inc. Encore Cinema isn't endorsed by any of them.</span></div>
+  <nav><a href="https://encoreaudio.co.uk/">Encore Audio, for your music</a><a href="/#interest">Register interest</a><a href="/privacy.html">Privacy</a><a href="/open-source.html">Open source</a></nav>
+</div></footer>
+<script src="/assets/forms.js" defer></script>
+<script src="/assets/motion.js" defer></script>
+</body>
+</html>
