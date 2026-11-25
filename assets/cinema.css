@@ -65,3 +65,7 @@ html { overflow-x: clip; } /* the glows and the projector beam spill past the ed
   .tv .screen img:first-child { opacity: 1; }
   .beam, .tv .screen::after, .reel .track { animation: none; }
 }
+
+/* Demo page: the demo films' posters */
+.demo-posters { display: grid; gap: 14px; grid-template-columns: repeat(3, 1fr); margin: 24px 0 8px; max-width: 640px; }
+.demo-posters img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; border-radius: 10px; border: 1px solid var(--line); display: block; box-shadow: 0 18px 40px rgba(0,0,0,.45); }
